@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+#MyBatis
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
