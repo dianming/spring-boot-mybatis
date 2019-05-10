@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wd.mapper.GkfsSchoolEntityMapper">
+  <resultMap id="BaseResultMap" type="com.wd.model.GkfsSchoolEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="batch" jdbcType="VARCHAR" property="batch" />
+    <result column="school_location" jdbcType="VARCHAR" property="schoolLocation" />
+    <result column="entry_date" jdbcType="DATE" property="entryDate" />
+    <result column="lowest_score" jdbcType="DOUBLE" property="lowestScore" />
+    <result column="batch_line" jdbcType="DOUBLE" property="batchLine" />
+    <result column="plan_count" jdbcType="DOUBLE" property="planCount" />
+    <result column="chinese_score" jdbcType="DOUBLE" property="chineseScore" />
+    <result column="math_score" jdbcType="DOUBLE" property="mathScore" />
+    <result column="foreign_score" jdbcType="DOUBLE" property="foreignScore" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, subject, batch, school_location, entry_date, lowest_score, batch_line, plan_count, 
+    chinese_score, math_score, foreign_score
+  </sql>
+  <select id="selectByExample" parameterType="com.wd.model.GkfsSchoolEntityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from gkfs_school
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gkfs_school
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gkfs_school
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wd.model.GkfsSchoolEntityExample">
+    delete from gkfs_school
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wd.model.GkfsSchoolEntity">
+    insert into gkfs_school (id, subject, batch, 
+      school_location, entry_date, lowest_score, 
+      batch_line, plan_count, chinese_score, 
+      math_score, foreign_score)
+    values (#{id,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, 
+      #{schoolLocation,jdbcType=VARCHAR}, #{entryDate,jdbcType=DATE}, #{lowestScore,jdbcType=DOUBLE}, 
+      #{batchLine,jdbcType=DOUBLE}, #{planCount,jdbcType=DOUBLE}, #{chineseScore,jdbcType=DOUBLE}, 
+      #{mathScore,jdbcType=DOUBLE}, #{foreignScore,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wd.model.GkfsSchoolEntity">
+    insert into gkfs_school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="batch != null">
+        batch,
+      </if>
+      <if test="schoolLocation != null">
+        school_location,
+      </if>
+      <if test="entryDate != null">
+        entry_date,
+      </if>
+      <if test="lowestScore != null">
+        lowest_score,
+      </if>
+      <if test="batchLine != null">
+        batch_line,
+      </if>
+      <if test="planCount != null">
+        plan_count,
+      </if>
+      <if test="chineseScore != null">
+        chinese_score,
+      </if>
+      <if test="mathScore != null">
+        math_score,
+      </if>
+      <if test="foreignScore != null">
+        foreign_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolLocation != null">
+        #{schoolLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="lowestScore != null">
+        #{lowestScore,jdbcType=DOUBLE},
+      </if>
+      <if test="batchLine != null">
+        #{batchLine,jdbcType=DOUBLE},
+      </if>
+      <if test="planCount != null">
+        #{planCount,jdbcType=DOUBLE},
+      </if>
+      <if test="chineseScore != null">
+        #{chineseScore,jdbcType=DOUBLE},
+      </if>
+      <if test="mathScore != null">
+        #{mathScore,jdbcType=DOUBLE},
+      </if>
+      <if test="foreignScore != null">
+        #{foreignScore,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wd.model.GkfsSchoolEntityExample" resultType="java.lang.Long">
+    select count(*) from gkfs_school
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update gkfs_school
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.batch != null">
+        batch = #{record.batch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolLocation != null">
+        school_location = #{record.schoolLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entryDate != null">
+        entry_date = #{record.entryDate,jdbcType=DATE},
+      </if>
+      <if test="record.lowestScore != null">
+        lowest_score = #{record.lowestScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.batchLine != null">
+        batch_line = #{record.batchLine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.planCount != null">
+        plan_count = #{record.planCount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.chineseScore != null">
+        chinese_score = #{record.chineseScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mathScore != null">
+        math_score = #{record.mathScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.foreignScore != null">
+        foreign_score = #{record.foreignScore,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update gkfs_school
+    set id = #{record.id,jdbcType=INTEGER},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      batch = #{record.batch,jdbcType=VARCHAR},
+      school_location = #{record.schoolLocation,jdbcType=VARCHAR},
+      entry_date = #{record.entryDate,jdbcType=DATE},
+      lowest_score = #{record.lowestScore,jdbcType=DOUBLE},
+      batch_line = #{record.batchLine,jdbcType=DOUBLE},
+      plan_count = #{record.planCount,jdbcType=DOUBLE},
+      chinese_score = #{record.chineseScore,jdbcType=DOUBLE},
+      math_score = #{record.mathScore,jdbcType=DOUBLE},
+      foreign_score = #{record.foreignScore,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wd.model.GkfsSchoolEntity">
+    update gkfs_school
+    <set>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolLocation != null">
+        school_location = #{schoolLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        entry_date = #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="lowestScore != null">
+        lowest_score = #{lowestScore,jdbcType=DOUBLE},
+      </if>
+      <if test="batchLine != null">
+        batch_line = #{batchLine,jdbcType=DOUBLE},
+      </if>
+      <if test="planCount != null">
+        plan_count = #{planCount,jdbcType=DOUBLE},
+      </if>
+      <if test="chineseScore != null">
+        chinese_score = #{chineseScore,jdbcType=DOUBLE},
+      </if>
+      <if test="mathScore != null">
+        math_score = #{mathScore,jdbcType=DOUBLE},
+      </if>
+      <if test="foreignScore != null">
+        foreign_score = #{foreignScore,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wd.model.GkfsSchoolEntity">
+    update gkfs_school
+    set subject = #{subject,jdbcType=VARCHAR},
+      batch = #{batch,jdbcType=VARCHAR},
+      school_location = #{schoolLocation,jdbcType=VARCHAR},
+      entry_date = #{entryDate,jdbcType=DATE},
+      lowest_score = #{lowestScore,jdbcType=DOUBLE},
+      batch_line = #{batchLine,jdbcType=DOUBLE},
+      plan_count = #{planCount,jdbcType=DOUBLE},
+      chinese_score = #{chineseScore,jdbcType=DOUBLE},
+      math_score = #{mathScore,jdbcType=DOUBLE},
+      foreign_score = #{foreignScore,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
