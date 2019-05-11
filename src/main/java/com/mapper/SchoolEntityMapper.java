@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.model.SchoolEntity;
 import com.model.SchoolEntityExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface SchoolEntityMapper {
     long countByExample(SchoolEntityExample example);
 
@@ -18,6 +20,8 @@ public interface SchoolEntityMapper {
     int insertSelective(SchoolEntity record);
 
     List<SchoolEntity> selectByExample(SchoolEntityExample example);
+
+    List<SchoolEntity> findBy(SchoolEntity e);
 
     SchoolEntity selectByPrimaryKey(Integer id);
 
