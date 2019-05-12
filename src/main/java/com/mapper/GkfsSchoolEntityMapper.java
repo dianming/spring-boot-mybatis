@@ -19,6 +19,8 @@ public interface GkfsSchoolEntityMapper {
 
     List<GkfsSchoolEntity> selectByExample(GkfsSchoolEntityExample example);
 
+    List<GkfsSchoolEntity> findBy(GkfsSchoolEntity gs);
+
     GkfsSchoolEntity selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") GkfsSchoolEntity record, @Param("example") GkfsSchoolEntityExample example);

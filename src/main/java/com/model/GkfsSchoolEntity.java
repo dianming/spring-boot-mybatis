@@ -25,6 +25,43 @@ public class GkfsSchoolEntity {
 
     private Double foreignScore;
 
+    private String localStud;
+    private String localSchool;
+    private String localStudCode;
+    private String localSchoolCode;
+
+    public String getLocalStud() {
+        return localStud;
+    }
+
+    public void setLocalStud(String localStud) {
+        this.localStud = localStud;
+    }
+
+    public String getLocalSchool() {
+        return localSchool;
+    }
+
+    public void setLocalSchool(String localSchool) {
+        this.localSchool = localSchool;
+    }
+
+    public String getLocalStudCode() {
+        return localStudCode;
+    }
+
+    public void setLocalStudCode(String localStudCode) {
+        this.localStudCode = localStudCode;
+    }
+
+    public String getLocalSchoolCode() {
+        return localSchoolCode;
+    }
+
+    public void setLocalSchoolCode(String localSchoolCode) {
+        this.localSchoolCode = localSchoolCode;
+    }
+
     public Integer getId() {
         return id;
     }

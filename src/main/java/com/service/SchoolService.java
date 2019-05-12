@@ -1,6 +1,7 @@
 package com.service;
 
 import com.mapper.SchoolEntityMapper;
+import com.model.GkfsSchoolEntity;
 import com.model.SchoolEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.List;
  */
 public interface SchoolService {
 
-    public List getSchoolList(SchoolEntity s);
+    public List<SchoolEntity> getSchoolList(SchoolEntity s);
+
+    public List<GkfsSchoolEntity> getGkfsSchoolList(GkfsSchoolEntity gs);
 
 }

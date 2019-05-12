@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.common.Result;
+import com.model.GkfsSchoolEntity;
 import com.model.SchoolEntity;
 import com.service.SchoolService;
 import org.slf4j.Logger;
@@ -34,6 +35,19 @@ public class SchoolController {
         } catch (Exception e) {
             log.error("getList {}", e);
             result.setCode("s00001");
+        }
+        return result;
+    }
+
+    @GetMapping("/getSchoolFsxList")
+    public Object getSchoolFsxList(GkfsSchoolEntity gs) {
+        Result result = new Result();
+        try {
+            List<GkfsSchoolEntity> list = schoolService.getGkfsSchoolList(gs);
+            result.setData(list);
+        } catch (Exception e) {
+            log.error("getSchoolFsxList {}", e);
+            result.setCode("s00002");
         }
         return result;
     }
